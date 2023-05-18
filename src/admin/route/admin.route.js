@@ -1,16 +1,13 @@
 const express = require("express")
 const router = express.Router()
+const { verifyAdmin } = require("N:/Coding/NodeJs/Student Management System/middlewares/tokenAuth")
 
-router.route("/register")
-    .get((req, res)=>{
-        res.send("Register ka get")
-    })
-    .post((req, res)=>{
-        res.send("register ka post")
-    })
+const { registerPage, register, loginPage, login}= require("../controller/admin.controller")
 
-router.route("/login", (req, res) => {
-    res.send("You are posting on admin")
-})
+router.route("/register").get(registerPage).post(register)
+
+router.route("/login")
+    .get(verifyAdmin, loginPage)
+    .post(login)
 
 module.exports =router

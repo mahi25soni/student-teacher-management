@@ -3,7 +3,6 @@ const mongoose = require("mongoose")
 const adminSchema = new mongoose.Schema({
     username : {
         type : String,
-        unique : true,
         required : [true, "Enter your username"]
         
     },
@@ -15,7 +14,7 @@ const adminSchema = new mongoose.Schema({
     },
     schoolname : {
         type : String,
-        unique : true,
+        // unique : true, Isko baad mei sahi kr denge
         required : [true, "Enter your schoolname"]
         
     },

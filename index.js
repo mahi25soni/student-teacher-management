@@ -9,6 +9,9 @@ const Connect = require("./extras/mongo.connect")
 
 const app = express()
 
+app.use(bodyParser.urlencoded  ( {extended:false} ) )
+app.use(bodyParser.json());
+
 const uri = 'mongodb://0.0.0.0:27017/StudentManagement';  // mongodb://localhost:27017 is not working more some reasons 
 
 
