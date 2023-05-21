@@ -4,6 +4,8 @@ const mongoose = require("mongoose")
 
 const student = require("./src/user/route/user.route")
 const admin = require("./src/admin/route/admin.route")
+const grade = require("./src/grade/route/grade.route")
+const teachers = require("./src/teachers/route/teachers.route")
 
 const Connect = require("./extras/mongo.connect")
 
@@ -17,6 +19,9 @@ const uri = 'mongodb://0.0.0.0:27017/StudentManagement';  // mongodb://localhost
 
 app.use("/admin", admin)
 app.use("/student", student)
+app.use("/class", grade)
+app.use("/teachers", teachers)
+
 
 const trying = async () => {
     try {

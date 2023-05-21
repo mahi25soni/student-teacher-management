@@ -35,8 +35,6 @@ const login = async (req, res) => {
                 }
                 else{
                     req.headers.authorization = token
-                    // console.log(req.header)
-                    console.log(req.headers);
                     return res.send(token)
 
 
@@ -47,9 +45,15 @@ const login = async (req, res) => {
     }
 }
 
+
+const viewAll = async (req, res) => {
+    const all_data = await admin.find().exec()
+    res.send(all_data)
+}
 module.exports = {
     registerPage,
     register,
     loginPage,
-    login
+    login,
+    viewAll
 }

@@ -2,7 +2,9 @@ const express = require("express")
 const router = express.Router()
 const { verifyAdmin } = require("N:/Coding/NodeJs/Student Management System/middlewares/tokenAuth")
 
-const { registerPage, register, loginPage, login}= require("../controller/admin.controller")
+const { registerPage, register, loginPage, login, viewAll}= require("../controller/admin.controller")
+
+router.route("/").get(viewAll)
 
 router.route("/register").get(registerPage).post(register)
 
