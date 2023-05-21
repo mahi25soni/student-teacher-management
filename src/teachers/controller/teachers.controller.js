@@ -51,7 +51,7 @@ const viewAll = async (req, res) => {
     res.send(all_data)
 }
 
-module.exports = {
+module.exports = { 
     teachersRegisterPage,
     teachersRegister,
     teachersLoginPage,

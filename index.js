@@ -2,10 +2,10 @@ const express = require("express")
 const bodyParser = require("body-parser")
 const mongoose = require("mongoose")
 
-const student = require("./src/user/route/user.route")
 const admin = require("./src/admin/route/admin.route")
 const grade = require("./src/grade/route/grade.route")
 const teachers = require("./src/teachers/route/teachers.route")
+const student = require("./src/students/route/students.route")
 
 const Connect = require("./extras/mongo.connect")
 

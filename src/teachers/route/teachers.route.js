@@ -18,6 +18,6 @@ router.route("/register")
 
 router.route("/login")
     .get(teachersLoginPage)
-    .post(teachersLogin)
+    .post(teachersLogin) 
 
 module.exports =router
