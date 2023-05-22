@@ -10,7 +10,7 @@ const  registerPage = (req, res) => {
 const register = async (req, res) => {
     req.body.password = await hash(req.body.password, 10)
     const newadmin = new admin(req.body)
-    newadmin.save()
+    await newadmin.save()
     res.send(newadmin)
 }
 

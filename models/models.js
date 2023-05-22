@@ -38,9 +38,8 @@ const gradeSchema = new mongoose.Schema({
     },
     students : [{
         type : mongoose.Schema.Types.ObjectId,
-        ref : "teacher",
-    }],
-    students : String
+        ref : "student",
+    }]
 },{
     timestamps: true,
   })
@@ -73,11 +72,13 @@ const teacher = new mongoose.model("teacher", teacherSchema)
 const studentSchema = new mongoose.Schema({
     username : {
         type : String,
+        unique : [true, 'Username already taken'],
         required : [true, "Enter your username"]
         
     },
     email : {
         type : String,
+        unique : true,
         // unique : true,
         required : [true, "Enter your email"],
 
@@ -97,6 +98,12 @@ const studentSchema = new mongoose.Schema({
 },{
     timestamps: true,
   })
+
+studentSchema.post("save", async function(){ // Can't use arrow function here
+    const find_grade = await grade.findOne({_id : this.grade}).exec()
+    find_grade.students.push(this._id)
+    await find_grade.save()
+})
 
 const student = new mongoose.model("student", studentSchema)
 

@@ -1,4 +1,4 @@
-const {admin, grade, teacher} = require("N:/Coding/NodeJs/Student Management System/models/models.js")
+const {admin, grade, teacher, student} = require("N:/Coding/NodeJs/Student Management System/models/models.js")
 const { hash , compare} = require("bcrypt")
 const jwt  = require("jsonwebtoken")
 
@@ -11,7 +11,6 @@ const gradeRegister = async (req, res) => {
     try{
         const newgrade = new grade(req.body)
         await newgrade.save()
-        res.send(newgrade)
     }
     catch(err){
         if (err.code === 11000) {
@@ -24,7 +23,7 @@ const gradeRegister = async (req, res) => {
 }
 
 const viewAll = async (req, res) => {
-    const all_data = await grade.find().populate("class_teacher").exec()
+    const all_data = await grade.find().exec()
     res.send(all_data)
 }
 

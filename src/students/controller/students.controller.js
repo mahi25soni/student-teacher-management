@@ -9,11 +9,13 @@ const  studentsRegisterPage = (req, res) => {
 
 const studentsRegister = async (req, res) => {
     // req.body.password = await hash(req.body.password, 10)
+    console.log(req.body)
     try {
         const newstudent = new student(req.body)
         await newstudent.save()
         res.send(newstudent)
     }
+
     catch(err) {
         if(err.code === 11000){
             res.send("duplicate values not allowed")
