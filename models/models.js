@@ -113,7 +113,10 @@ const examMasterSchema = new mongoose.Schema({
         type : String,
         unique : true
     },
-    session : Number
+    session : {
+        type : Number,
+        require : true
+    }
 
 }, {
     timestamps : true
@@ -161,6 +164,10 @@ module.exports = {
     admin,
     grade,
     teacher,
-    student
+    student,
+    examMaster,
+    subjectMaster,
+    marks
+
 }
 
