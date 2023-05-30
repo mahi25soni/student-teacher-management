@@ -20,4 +20,4 @@ router.route("/login")
     .get(studentsLoginPage)
     .post(studentsLogin) 
 
-module.exports =router
+module.exports =router 

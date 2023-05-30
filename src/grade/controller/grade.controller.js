@@ -23,7 +23,7 @@ const gradeRegister = async (req, res) => {
 }
 
 const viewAll = async (req, res) => {
-    const all_data = await grade.find().exec()
+    const all_data = await grade.find()``.exec()
     res.send(all_data)
 }
 

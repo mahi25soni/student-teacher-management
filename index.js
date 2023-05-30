@@ -6,6 +6,9 @@ const admin = require("./src/admin/route/admin.route")
 const grade = require("./src/grade/route/grade.route")
 const teachers = require("./src/teachers/route/teachers.route")
 const student = require("./src/students/route/students.route")
+const subject = require("./src/masters/subject-master/subject-master.route")
+const exam = require("./src/masters/exam-master/exam-master.route")
+
 
 const Connect = require("./extras/mongo.connect")
 
@@ -21,6 +24,8 @@ app.use("/admin", admin)
 app.use("/student", student)
 app.use("/class", grade)
 app.use("/teachers", teachers)
+app.use("/exam", exam)
+app.use("/subject", subject)
 
 
 const trying = async () => {
