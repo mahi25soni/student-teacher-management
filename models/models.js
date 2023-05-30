@@ -95,9 +95,6 @@ const studentSchema = new mongoose.Schema({
     grade : {
         type : mongoose.Schema.Types.ObjectId,
         ref : "grade",
-    },
-    result : {
-        type : String
     }
 },{
     timestamps: true,
@@ -135,14 +132,17 @@ const subjectMasterSchema = new mongoose.Schema({
 const subjectMaster = new mongoose.model("subjectMaster", subjectMasterSchema)
 
 const markSchema = new mongoose.Schema({
+    studentId : {
+        type : mongoose.Schema.Types.ObjectId,
+        ref : "student"
+    },
     examId : {
         type : mongoose.Schema.Types.ObjectId,
         ref : "exam"
     },
-    subject : {
-        type : String,
-
-        unique : true
+    subjectId : {
+        type : mongoose.Schema.Types.ObjectId,
+        ref : "subjectMaster"
     },
     total_marks : Number,
     marks_obtained : Number
