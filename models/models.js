@@ -111,11 +111,16 @@ const student = new mongoose.model("student", studentSchema)
 const examMasterSchema = new mongoose.Schema({
     name : {
         type : String,
-        unique : true
+        enum : {
+            values : ["Unit 1", "Unit 2", "Unit 3", "Half Yearly", "Yearly"],
+            message : "The exam name is not in the list"
+        },
+        
     },
     session : {
         type : Number,
-        require : true
+        unique : [true, "Can't enter duplicate value for session"],
+        required : [true, "Enter the session"]
     }
 
 }, {

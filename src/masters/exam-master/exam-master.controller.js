@@ -5,18 +5,25 @@ const addExamMasterPage = (req, res) => {
     res.send("PAGE for laoding exam master")
 }
 
-const addExamMaster = async (req, res) => {
+const addExamMaster = async (req, res, next) => {
+    // examMaster.collection.dropIndex({ name: 1 }, (err) => {
+    //     if (err) {
+    //       console.error('Error dropping unique index:', err);
+    //     } else {
+    //       res.send('Unique index dropped successfully.');
+    //     }
+    //   });
     try {
         const newexam = new examMaster(req.body)
         await newexam.save()
         res.send(newexam)
     }
     catch(e){
-        if(e.code === 11000){
-                res.send("Duplicate values not allowed")
-        }
+        // if(e.code === 11000){
+        //         res.send("Duplicate values not allowed")
+        // }
         // else {
-        //     res.send(e)
+            next(e)
         // }  
     }
 }
