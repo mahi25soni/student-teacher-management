@@ -6,8 +6,7 @@ const {addExamMaster, addExamMasterPage, getAll} = require("./exam-master.contro
 router.route("/").get(getAll)
 
 router.route("/add")
-    .get(handleVerification,addExamMasterPage)
-    .post( addExamMaster, handleVerification)
-
+    .get(addExamMasterPage)
+    .post(addExamMaster, handleVerification)
 
 module.exports = router

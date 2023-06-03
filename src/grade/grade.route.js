@@ -1,17 +1,17 @@
 const express = require("express")
 const router = express.Router()
-const { verifyAdmin } = require("N:/Coding/NodeJs/Student Management System/middlewares/tokenAuth")
+const { handleVerification } = require("../../middlewares/verificationError")
 
- const {
+const {
     gradeRegisterPage,
     gradeRegister,
     viewAll
-}  = require("../controller/grade.controller")
+}  = require("../grade/grade.controller")
 
 router.route("/").get(viewAll)
 
 router.route("/register")
     .get(gradeRegisterPage)
-    .post(gradeRegister)
+    .post(gradeRegister, handleVerification)
 
 module.exports =router

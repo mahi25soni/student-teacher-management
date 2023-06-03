@@ -19,12 +19,7 @@ const addExamMaster = async (req, res, next) => {
         res.send(newexam)
     }
     catch(e){
-        // if(e.code === 11000){
-        //         res.send("Duplicate values not allowed")
-        // }
-        // else {
             next(e)
-        // }  
     }
 }
 

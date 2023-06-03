@@ -5,29 +5,24 @@ const addSubjectMasterPage = (req, res) => {
     res.send("PAGE for laoding Subject master")
 }
 
-const addSubjectMaster = async (req, res) => {
+const addSubjectMaster = async (req, res, next) => {
     try {
         const newSubject = new subjectMaster(req.body)
         await newSubject.save()
         res.send(newSubject)
     }
     catch(e){
-        if(e.code === 11000){
-            res.send("Duplicated values not allowed")
-        }
-        else {
-            res.send(e)
-        }
+        next(e)
     }
 }
 
-const getAll = async (req, res) => {
+const getAll = async (req, res, next) => {
     try { 
         const allSubjects = await subjectMaster.find().exec()
         res.status(201).send(allSubjects)
     }
     catch(e) {
-        res.send(e)
+        next(e)
     }
 }
 

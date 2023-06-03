@@ -119,7 +119,7 @@ const examMasterSchema = new mongoose.Schema({
     },
     session : {
         type : Number,
-        unique : [true, "Can't enter duplicate value for session"],
+        unique : true,
         required : [true, "Enter the session"]
     }
 

@@ -1,4 +1,4 @@
-const {admin} = require("N:/Coding/NodeJs/Student Management System/models/models.js")
+    const {admin} = require("../../models/models")
 const { hash , compare} = require("bcrypt")
 const jwt  = require("jsonwebtoken")
 
