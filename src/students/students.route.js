@@ -1,6 +1,7 @@
 const express = require("express")
 const router = express.Router()
-const { verifyAdmin } = require("N:/Coding/NodeJs/Student Management System/middlewares/tokenAuth")
+const { verifyAdmin } = require("../../middlewares/tokenAuth")
+const { handleVerification } = require("../../middlewares/verificationError")
 
  const {
     studentsRegisterPage,
@@ -8,13 +9,13 @@ const { verifyAdmin } = require("N:/Coding/NodeJs/Student Management System/midd
     studentsLoginPage,
     studentsLogin,
     viewAll
-}  = require("../controller/students.controller")
+}  = require("../students/students.controller")
 
 router.route("/").get(viewAll)
 
 router.route("/register")
     .get(studentsRegisterPage)
-    .post(studentsRegister)
+    .post(studentsRegister, handleVerification )
 
 router.route("/login")
     .get(studentsLoginPage)

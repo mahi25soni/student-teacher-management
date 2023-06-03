@@ -1,4 +1,4 @@
-    const {admin} = require("../../models/models")
+const {admin} = require("../../models/models")
 const { hash , compare} = require("bcrypt")
 const jwt  = require("jsonwebtoken")
 
@@ -7,11 +7,16 @@ const  registerPage = (req, res) => {
     res.send("Register ka get")
 }
 
-const register = async (req, res) => {
-    req.body.password = await hash(req.body.password, 10)
+const register = async (req, res, next) => {
+    try{    
+        req.body.password = await hash(req.body.password, 10)
     const newadmin = new admin(req.body)
     await newadmin.save()
     res.send(newadmin)
+    }
+    catch(e){
+        next(e)
+    }
 }
 
 const loginPage = (req, res) => {
@@ -46,9 +51,15 @@ const login = async (req, res) => {
 }
 
 
-const viewAll = async (req, res) => {
-    const all_data = await admin.find().exec()
-    res.send(all_data)
+const viewAll = async (req, res, next) => {
+    try{
+
+        const all_data = await admin.find().exec()
+        res.send(all_data)
+    }
+    catch(e) {
+        next(e)
+    }
 }
 module.exports = {
     registerPage,

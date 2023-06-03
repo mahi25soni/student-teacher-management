@@ -7,7 +7,7 @@ const  studentsRegisterPage = (req, res) => {
     res.send("students register ka page")
 }
 
-const studentsRegister = async (req, res) => {
+const studentsRegister = async (req, res, next) => {
     // req.body.password = await hash(req.body.password, 10)
     console.log(req.body)
     try {
@@ -17,12 +17,7 @@ const studentsRegister = async (req, res) => {
     }
 
     catch(err) {
-        if(err.code === 11000){
-            res.send("duplicate values not allowed")
-        }
-        else{
-            res.send(err)
-        }
+        next(err)
     }
 }
 
